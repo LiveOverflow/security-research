@@ -1,7 +1,8 @@
 # Collaborative Security Research
 
-
 ## Arbitrary File Write
+[Watch Introduction](https://clips.twitch.tv/KindDifficultSushiBibleThump-1YdF0sW6bBO64ZCW)
+
 Imagine you find a vulnerability where you can *delete an arbitrary file* or you can redirect log output to a root owned file, what can you do with that?
 
 * [delete a file](arbitrary-file-write/file-delete/README.md)
@@ -10,6 +11,11 @@ Imagine you find a vulnerability where you can *delete an arbitrary file* or you
 * [create a file](arbitrary-file-write/file-create/README.md)
 
 ### Defined Attacker Abilities
+
+Target OS:
+* Ubuntu 22.04 LTS
+* macOS
+* ...
 
 | Attacker Ability | Privilege | Filename/Extension | Content | Example                                                                 |
 |------------------|-----------|--------------------|---------|-------------------------------------------------------------------------|
