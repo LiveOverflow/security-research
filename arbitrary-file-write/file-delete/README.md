@@ -1,0 +1,3 @@
+# Delete Arbitrary File
+* as root or user you can...
+	* delete a file
