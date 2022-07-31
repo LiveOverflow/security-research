@@ -58,3 +58,6 @@ asdas
 #### Non-login shell
 * `/etc/bash.bashrc` executed for all users 
 * `~/.bashrc` for user specific.  
+
+### Eicar antimalware testfile
+You can try to obtain it [here](https://www.eicar.org/download-anti-malware-testfile/). The most it'll do is trigger deletion by antivirus especially those with real time detection but an be helpful for triggering weird errors in some applications.  
