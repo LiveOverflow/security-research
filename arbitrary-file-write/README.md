@@ -5,10 +5,10 @@
 
 Imagine you find a vulnerability where you can *delete an arbitrary file* or you can redirect log output to a root owned file, what can you do with that?
 
-* [delete a file](arbitrary-file-write/file-delete/README.md)
-* [append to a file](arbitrary-file-write/file-append/README.md)
-* [overwrite a file](arbitrary-file-write/file-overwrite/README.md)
-* [create a file](arbitrary-file-write/file-create/README.md)
+* [delete a file](file-delete/README.md)
+* [append to a file](file-append/README.md)
+* [overwrite a file](file-overwrite/README.md)
+* [create a file](file-create/README.md)
 
 ### Useful Tools
 * `pspy` https://github.com/DominicBreuker/pspy

@@ -7,6 +7,8 @@
 		* partially control filename or path (eg. fixed extension)
 
 ### logrotate
+* requires `root` permissions
+* on Ubuntu 22.04 LTS `logrotate` is executed daily through `/etc/cron.daily/logrotate`
 * logrotate config files in `/etc/logrotate.d/<anything>`
 * consideres time in `/var/lib/logrotate/status` to determin if log should be rotated (you might have to wait for two days for a new file to trigger a first rotate)
 * comment lines start with `# a comment`
@@ -20,7 +22,7 @@
        copy
        ifempty
        missingok 
-       postrotate /usr/bin/touch /tmp/test/testrotate 
+       postrotate /usr/bin/touch /tmp/testrotate 
        endscript
 }
 ```
@@ -36,7 +38,7 @@ text and <00><ff>binary is okay here, but must not start with a [symbol]!@#
        copy
        ifempty
        missingok 
-       postrotate /usr/bin/touch /tmp/test/testrotate 
+       postrotate /usr/bin/touch /tmp/testrotate 
        endscript
 }
 
