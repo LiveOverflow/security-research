@@ -4,10 +4,10 @@
 ## Arbitrary File Write
 Imagine you find a vulnerability where you can *delete an arbitrary file* or you can redirect log output to a root owned file, what can you do with that?
 
-* [delete a file](arbitrary-file-write/file-delete/README)
-* [append to a file](arbitrary-file-write/file-append/README)
-* [overwrite a file](arbitrary-file-write/file-overwrite/README)
-* [create a file](arbitrary-file-write/file-create/README)
+* [delete a file](arbitrary-file-write/file-delete/README.md)
+* [append to a file](arbitrary-file-write/file-append/README.md)
+* [overwrite a file](arbitrary-file-write/file-overwrite/README.md)
+* [create a file](arbitrary-file-write/file-create/README.md)
 
 ### Defined Attacker Abilities
 
