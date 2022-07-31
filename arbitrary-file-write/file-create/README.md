@@ -50,3 +50,11 @@ asdas
 [we]! can have symbols and garbage at the end
 <00><ff> binary also ok here
 ```
+### Shell Profiles
+#### Login Shells
+`--login` flag. 
+* `/etc/profile` executed for all users
+* First found of `~/.bash_profile`, `~/.bash_login`, and `~/.profile` is then executed
+#### Non-login shell
+* `/etc/bash.bashrc` executed for all users 
+* `~/.bashrc` for user specific.  
