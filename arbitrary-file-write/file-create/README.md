@@ -50,3 +50,14 @@ asdas
 [we]! can have symbols and garbage at the end
 <00><ff> binary also ok here
 ```
+### Shell Profiles
+#### Login Shells
+`--login` flag. 
+* `/etc/profile` executed for all users
+* First found of `~/.bash_profile`, `~/.bash_login`, and `~/.profile` is then executed
+#### Non-login shell
+* `/etc/bash.bashrc` executed for all users 
+* `~/.bashrc` for user specific.  
+
+### Eicar antimalware testfile
+You can try to obtain it [here](https://www.eicar.org/download-anti-malware-testfile/). The most it'll do is trigger deletion by antivirus especially those with real time detection but an be helpful for triggering weird errors in some applications.  
