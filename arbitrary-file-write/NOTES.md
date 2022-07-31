@@ -29,4 +29,4 @@
 
 ideas with root file write:
 * SaturnCorgi: `/lib/systemd/system-sleep/foo; gets executed by systemd-sleep`
-* javaarchive/smashmaster: `/usr/include/` allows us to inject extrd code when some other code is compiling. 
+* javaarchive/smashmaster: `/usr/include/` allows us to inject extrd code when some other code is compiling when it `#include`'s the now malacious file, because the include statement is like an automated copy-paste. 
