@@ -7,6 +7,19 @@ These notes apply when you found a bug where:
 		* control filename/path
 		* partially control filename or path (eg. fixed extension)
 
+
+### cronjob /etc/cron.daily
+* create a file in `/etc/cron.daily/`
+* requires `root` permissions
+* executed through `crontab` via `run-parts`
+	* file **must** be executable.
+	* shell script or binary works
+
+### cronjob via /etc/cron.d/pwn
+* create a file in `/etc/cron.d/pwn`
+* requires `root` permissions
+* file syntax the same as in [crontab](../file-append/README.md#crontab)
+
 ### logrotate
 * requires `root` permissions
 * on Ubuntu 22.04 LTS `logrotate` is executed daily through `/etc/cron.daily/logrotate`
