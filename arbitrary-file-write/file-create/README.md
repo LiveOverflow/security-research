@@ -69,7 +69,6 @@ Note: On Ubuntu 20.04 and 22.04 `/bin/sh` is symlinked to `/bin/dash`.
 #### Login Shells
 `--login` flag. 
 The following has been researched for bash. 
-* `/etc/profile` executed for all users
 * First found of `~/.bash_profile`, `~/.bash_login`, and `~/.profile` is then executed.
 * For bash `~/.bash_logout` executed on interactive exit OR noninteractive `exit` command is run.
 Two bash quotes and one dash quote: 
@@ -77,7 +76,7 @@ Two bash quotes and one dash quote:
 > When an interactive login shell exits, or a non-interactive login shell executes the **exit** builtin command, **bash** reads and executes commands from the file _~/.bash_logout_, if it exists.
 > A login shell first reads commands from the files /etc/profile and .profile if they exist.
 #### Non-login shell
-* `/etc/bash.bashrc` executed for all users 
+* `/etc/bash.bashrc` executed for all users, does not exist by default. 
 * `~/.bashrc` for user specific.  
 
 Sources: [dash manpage](https://manned.org/dash) and [bash manpage](https://manned.org/bash)

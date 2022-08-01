@@ -86,5 +86,102 @@ user_pref("browser.startup.homepage_override.mstone", "103.0");
 user_pref("browser.startup.homepage_override.once", "{\"message_id\":\"WNP_MOMENTS_13\",\"url\":\"https://www.mozilla.org/says_to_you/welcome/13\",\"expire\":1840908800000}");
 ```
 This actually works even with that big scary warning, but only because I edited it **when firefox is not open**. To see what configuration opens we can control check out the specialized url `about:config` in firefox. Loads of things can be done from redirecting doh urls, setting proxy settings, **changing how content is sandboxed**, and more cool things. 
+### System-wide shell profiles
+#### /etc/profile behavior
+This applies to both bash and dash login shells. The default content is 
+```bash
+# /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
+# and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
+
+if [ "${PS1-}" ]; then
+  if [ "${BASH-}" ] && [ "$BASH" != "/bin/sh" ]; then
+    # The file bash.bashrc already sets the default PS1.
+    # PS1='\h:\w\$ '
+    if [ -f /etc/bash.bashrc ]; then
+      . /etc/bash.bashrc
+    fi
+  else
+    if [ "`id -u`" -eq 0 ]; then
+      PS1='# '
+    else
+      PS1='$ '
+    fi
+  fi
+fi
+
+if [ -d /etc/profile.d ]; then
+  for i in /etc/profile.d/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+```
+The defaults do the following:
+1. As you can see it invokes /etc/bash.bashrc if we're in bash and the file exists. 
+2. If /etc/profile.d exists (which it does on Ubuntu 22.04), it runs every file with the sh extension in that directory.  
+Files existing in that directory (TODO: look into these and see what else we can utilize):
+```
+1-locale-fix.sh  bash_completion.sh debuginfod.csh  gnome-session_gnomerc.sh  vte-2.91.sh  xdg_dirs_desktop_session.sh apps-bin-path.sh  cedilla-portuguese.sh  debuginfod.sh   im-config_wayland.sh vte.csh
+```
+We can test the behavior for bash with a modified `/etc/profile` by invoking `bash --login`. Consider the sample /etc/profile appending
+```bash
+user@ubuntu2204:~$ cat /etc/profile
+# /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
+# and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
+
+if [ "${PS1-}" ]; then
+  if [ "${BASH-}" ] && [ "$BASH" != "/bin/sh" ]; then
+    # The file bash.bashrc already sets the default PS1.
+    # PS1='\h:\w\$ '
+    if [ -f /etc/bash.bashrc ]; then
+      . /etc/bash.bashrc
+    fi
+  else
+    if [ "$(id -u)" -eq 0 ]; then
+      PS1='# '
+    else
+      PS1='$ '
+    fi
+  fi
+fi
+
+if [ -d /etc/profile.d ]; then
+  for i in /etc/profile.d/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+
+one
+two
+)
+three
+(
+four
+```
+We invoke bash:
+```bash
+user@ubuntu2204:~$ bash --login
+Command 'one' not found, did you mean:
+  command 'mne' from deb python3-mne (0.23.4+dfsg-1)
+  command 'ode' from deb plotutils (2.6-11)
+  command 'ne' from deb ne (3.3.1-1)
+Try: sudo apt install <deb name>
+Command 'two' not found, did you mean:
+  command 'twm' from deb twm (1:1.0.10-1)
+  command 'tio' from deb tio (1.32-1)
+  command 'tao' from deb taopm (1.0-7)
+  command 'qwo' from deb qwo (0.5-3)
+Try: sudo apt install <deb name>
+bash: /etc/profile: line 31: syntax error near unexpected token `)'
+bash: /etc/profile: line 31: `)'
+user@ubuntu2204:~$ 
+```
+Commad not found errors even if they don't match an apt package do not stop execution however syntax errors do. If you were supposedly doing file append instead of overwrite, a single syntax error could stop this from working completley. 
+
 ## crontab
 See [file append](../file-append/README.md#crontab)
