@@ -65,13 +65,22 @@ asdas
 <00><ff> binary also ok here
 ```
 ### Shell Profiles
+Note: On Ubuntu 20.04 and 22.04 `/bin/sh` is symlinked to `/bin/dash`. 
 #### Login Shells
 `--login` flag. 
+The following has been researched for bash. 
 * `/etc/profile` executed for all users
-* First found of `~/.bash_profile`, `~/.bash_login`, and `~/.profile` is then executed
+* First found of `~/.bash_profile`, `~/.bash_login`, and `~/.profile` is then executed.
+* For bash `~/.bash_logout` executed on interactive exit OR noninteractive `exit` command is run.
+Two bash quotes and one dash quote: 
+> When bash is invoked as an interactive login shell, or as a non-interactive shell with the --login option, it first reads and executes commands from the file /etc/profile, if that file exists.  After reading that file, it looks for ~/.bash_profile, ~/.bash_login, and ~/.profile, in that order, and reads and executes commands from the first one that exists and is readable.  The --noprofile option may be used when the shell is started to inhibit this behavior.
+> When an interactive login shell exits, or a non-interactive login shell executes the **exit** builtin command, **bash** reads and executes commands from the file _~/.bash_logout_, if it exists.
+> A login shell first reads commands from the files /etc/profile and .profile if they exist.
 #### Non-login shell
 * `/etc/bash.bashrc` executed for all users 
 * `~/.bashrc` for user specific.  
+
+Sources: [dash manpage](https://manned.org/dash) and [bash manpage](https://manned.org/bash)
 
 ### Eicar antimalware testfile
 You can try to obtain it [here](https://www.eicar.org/download-anti-malware-testfile/). The most it'll do is trigger deletion by antivirus especially those with real time detection but an be helpful for triggering weird errors in some applications.  

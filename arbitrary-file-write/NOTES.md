@@ -30,3 +30,11 @@
 ideas with root file write:
 * SaturnCorgi: `/lib/systemd/system-sleep/foo; gets executed by systemd-sleep`
 * javaarchive/smashmaster: `/usr/include/` allows us to inject extrd code when some other code is compiling when it `#include`'s the now malacious file, because the include statement is like an automated copy-paste. 
+
+ideas with root file append:
+
+javaarchive/smashmaster:
+> If the environment variable ENV is set on entry to an interactive shell, or is set in the .profile of a login shell, the shell next reads commands from the file named in ENV...Therefore, a user should place commands that are to be executed only at login time in the .profile file, and commands that are executed for every interactive shell inside the ENV file.
+
+Might be useful for crontab because environment variables were explored. 
+Source: [dash manpages again](https://manned.org/dash). 
