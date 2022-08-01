@@ -8,7 +8,7 @@
 ### pam
 If we know enough about the target os we can overwrite their user authentication system logic with a backdoor. Here's an [example](https://infosecwriteups.com/creating-a-backdoor-in-pam-in-5-line-of-code-e23e99579cd9) that returns a successful login for a specific hardcoded password. 
 
-### firefox (linux)
+### firefox profile redirection (linux)
 In `~/.mozilla/firefox` by default, `installs.ini` and `profiles.ini` tell firefox which profiles it has and which one to select as default. We can change the profile folder to something we know that probaly exists like the two folders "Crash Reports" and "Pending Rings", and then configure settings there. The hex bit is from a special hash firefox uses called `cityhash` which the install path is processed with. 
 #### Sample installs.ini
 
@@ -52,3 +52,15 @@ nsXREDirProvider and makes it available on all platforms.
 On most systems the installl location can be guessed (`/usr/bin/firefox` for mine). However additional complexities may occur, for example Ubuntu is using snaps for packaging applications a lot more in the newer versions (TODO: Research firefox path in snap, I'm guessing the config file location will be in at least `$HOME/snap/firefox`).
 
 TODO 2: POC of going from install directory to cityhash-ed hex digest. 
+
+After redirecting, we can presetup a couple of things if we get a file create vulnerability, or we can overwrite some once firefox has been run once with the profile redirection. 
+
+### firefox unused profile (linux)
+Observation: a new profile that has not been launched at least once has a folder that contains only a `times.json` file with the contents 
+```json
+{
+"created": 1659328302024,
+"firstUse": null
+}
+```
+
