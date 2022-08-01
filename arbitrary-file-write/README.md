@@ -16,6 +16,10 @@ Imagine you find a vulnerability where you can *delete an arbitrary file* or you
 * `fswatch` https://github.com/emcrisostomo/fswatch
 	* *"a cross-platform file change monitor"*
 * `opensnoop`
+* `processmonitor` https://docs.microsoft.com/en-us/sysinternals/downloads/procmon 
+	* *"an advanced monitoring tool for Windows that shows real-time file system, Registry and process/thread activity"*
+* `pssuspend` https://docs.microsoft.com/en-us/sysinternals/downloads/pssuspend
+	* *"Rather than kill the process that's consuming the resource, suspending permits you to let it continue operation at some later point in time."*
 
 ### Useful Snippets
 * Write an empty file to every folder

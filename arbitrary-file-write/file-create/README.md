@@ -61,3 +61,6 @@ asdas
 
 ### Eicar antimalware testfile
 You can try to obtain it [here](https://www.eicar.org/download-anti-malware-testfile/). The most it'll do is trigger deletion by antivirus especially those with real time detection but an be helpful for triggering weird errors in some applications.  
+
+### git hooks
+One may be able to sneak in a [git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#_git_hooks) in the `.git` of a git repo to execute any code of their choosing when a git action happens, however this requires the file to marked executable. 
