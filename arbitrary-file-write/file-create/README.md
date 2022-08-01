@@ -133,6 +133,7 @@ Aborting commit due to empty commit message.
 redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ 
 
 ```
+Note: I ran this on my main machine which is why it is on 20.04 however I do have a PPA installed that enables me to use to date versions of git. 
 ### firefox
 #### user.js
-See the firefox prefs.js section in file-overwrite. The difference here is that changes can be made while the browser is open. 
+See [file overwrite](../file-overwrite/README.md#Firefox%20Profile%20Redirection) The difference here is that changes can be made while the browser is open. 

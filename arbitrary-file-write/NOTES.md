@@ -39,3 +39,4 @@ ideas with root file append:
 Might be useful for crontab because environment variables were explored. 
 Source: [dash manpages again](https://manned.org/dash). 
 *  javaarchive/smashmaster: Use the eicar antimalware test file to [trip an antivirus that deletes files](https://github.com/LiveOverflow/security-research/pull/1#discussion_r934387982) thus escalating this to file delete! 
+*  javaarchive/smashmaster: Change the system [SystemD](https://wiki.archlinux.org/title/Systemd#Editing_provided_units) units, overwrite and append work for the modifying the file directly, create file works for the replacement functionality, we just change "/usr/lib/systemd/system/unit" to "/etc/systemd/system/unit". User units are uncommon. The main problem is `systemctl daemon-reload` needs to occur or a system restart in order for changes to take effect. 
