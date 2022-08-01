@@ -1,4 +1,5 @@
 # Create Arbitrary File
+These notes apply when you found a bug where:
 * as root or user you can...
 	* create an empty file
 	* create file and control content (eg. arbitrary file upload)

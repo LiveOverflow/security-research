@@ -1,4 +1,4 @@
-# Arbitrary File Write
+# Arbitrary File Write Research
 
 ## Motivation
 [Watch Introduction](https://clips.twitch.tv/KindDifficultSushiBibleThump-1YdF0sW6bBO64ZCW)
@@ -10,23 +10,28 @@ Imagine you find a vulnerability where you can *delete an arbitrary file* or you
 * [overwrite a file](file-overwrite/README.md)
 * [create a file](file-create/README.md)
 
-### Useful Tools
+## Research Goal
+
+The goal is to create a resource for professionals where they can lookup most reliable and useful technique when they find a file related bug. Allowing them to turn an arbitrary file write bug into a full shell, escalate privileges, get remote code execution, ... etc.
+
+If we find multiple techniques for a certain method, we want to prioritise techniques that work on the largest range of systems.
+
+## Research Notes
+
+#### Useful Tools
 * `pspy` https://github.com/DominicBreuker/pspy
 	* *"Monitor linux processes without root permissions"*
 * `fswatch` https://github.com/emcrisostomo/fswatch
 	* *"a cross-platform file change monitor"*
 * `opensnoop`
 
-### Useful Snippets
+#### Useful Snippets
 * Write an empty file to every folder
 	* `find / -type d -exec touch {}/liveoverflow \;`
 
-### Defined Attacker Abilities
+## Defined Attacker Abilities
 
-Target OS:
-* Ubuntu 22.04 LTS
-* macOS
-* ...
+The following table provides an overview of the different scenarios we consider. Each scenario might have different techniques based on the target operating system.
 
 | Attacker Ability | Privilege | Filename/Extension | Content | Example                                                                 |
 |------------------|-----------|--------------------|---------|-------------------------------------------------------------------------|
