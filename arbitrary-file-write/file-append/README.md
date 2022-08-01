@@ -23,7 +23,7 @@ Subsystem	sftp	/usr/lib/openssh/sftp-server
 #	ForceCommand cvs server
 ```
 
-### Messy file ending (user specific and all users)
+#### Messy file ending (user specific and all users)
 ```
 # Allow client to pass locale environment variables
 AcceptEnv LANG LC_*
