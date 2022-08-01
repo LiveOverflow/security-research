@@ -82,7 +82,57 @@ Two bash quotes and one dash quote:
 Sources: [dash manpage](https://manned.org/dash) and [bash manpage](https://manned.org/bash)
 
 ### git hooks
-One may be able to sneak in a [git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#_git_hooks) in the `.git` of a git repo to execute any code of their choosing when a git action happens, however this requires the file to marked executable. 
+One may be able to sneak in a [git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#_git_hooks) in the `.git` of a git repo to execute any code of their choosing when a git action happens.
+#### Limitations
+* File needs to be executable
+#### Example with commit message
+Hooks should be implemented about the same, commit message is just convinience at the moment. TODO: make a pull example
+```bash
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ ls .git
+branches  config  description  HEAD  hooks  index  info  logs  objects  packed-refs  refs
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ ls .git/hooks
+applypatch-msg.sample  fsmonitor-watchman.sample  pre-applypatch.sample  pre-merge-commit.sample    pre-push.sample    pre-receive.sample
+commit-msg.sample      post-update.sample         pre-commit.sample      prepare-commit-msg.sample  pre-rebase.sample  update.sample
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ cp .git/hooks/commit-msg.sample .git/hooks/commit-msg
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ cat .git/hooks/commit-msg
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ echo "echo executing_something" >> .git/hooks/commit-msg
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ echo "A file" > file
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ git stage *
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ git commit
+executing_something
+Aborting commit due to empty commit message.
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ chmod -x .git/hooks/commit-msg
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ git commit
+hint: The '.git/hooks/commit-msg' hook was ignored because it's not set as executable.
+hint: You can disable this warning with `git config advice.ignoredHook false`.
+Aborting commit due to empty commit message.
+redacteduser@ubuntu2004desktop:/tmp/RedactedRepo$ 
+
+```
 ### firefox
 #### user.js
 See the firefox prefs.js section in file-overwrite. The difference here is that changes can be made while the browser is open. 
