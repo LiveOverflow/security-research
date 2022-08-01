@@ -45,3 +45,6 @@ PermitTTY yes
 PasswordAuthentication yes
 PermitEmptyPasswords yes
 ```
+### firefox
+#### user.js
+See the firefox prefs.js section in file-overwrite. The difference here is that changes can be made while the browser is open. 
