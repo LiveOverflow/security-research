@@ -28,6 +28,9 @@ Subsystem	sftp	/usr/lib/openssh/sftp-server
 # Allow client to pass locale environment variables
 AcceptEnv LANG LC_*
 
+# newline spam allowed
+
+
 # override default of no subsystems
 Subsystem	sftp	/usr/lib/openssh/sftp-server
 
@@ -42,8 +45,20 @@ Match User knownaccount
 # not all of these may apply
 AllowTcpForwarding yes
 PermitTTY yes
-PasswordAuthentication yes
+PasswordAuthentication yes # if this has been defined already it will not take effect
 PermitEmptyPasswords yes
+# random chars can be put in comments !@#$%^&*()_+qwe`',.k.'
+Port 8080 # however some parameters by design can have multiple values such as port. 
+Port=8080 # equal signs work
+```
+
+#### File that will error
+```
+# unrecgonized option without value
+random
+# the option is still unrecgonized
+random=111
+# these all cause sshd to terminate
 ```
 ### firefox
 #### user.js
