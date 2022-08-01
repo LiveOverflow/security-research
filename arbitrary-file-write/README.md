@@ -37,24 +37,24 @@ If we find multiple techniques for a certain method, we want to prioritise techn
 
 The following table provides an overview of the different scenarios we consider. Each scenario might have different techniques based on the target operating system.
 
-| Attacker Ability | Privilege | Filename/Extension | Content | Example                                                                 |
-|------------------|-----------|--------------------|---------|-------------------------------------------------------------------------|
-| delete a file    | root      | -                  | -       | A VPN priviledged daemon can be tricked into deleting an arbitrary file |
-|                  | user      | -                  | -       | A webserver running with limited privs can delete an arbitrary file     |
-| append to a file | root      | full               | full    | Redirect log output of a root process to another file                   |
-|                  |           |                    | none    |                                                                         |
-|                  |           |                    | partial |                                                                         |
-|                  | user      | full               | full    |                                                                         |
-|                  |           |                    | none    |                                                                         |
-|                  |           |                    | partial |                                                                         |
-| overwrite file   | root      | full               | full    |                                                                         |
-|                  |           |                    | none    |                                                                         |
-|                  |           |                    | partial |                                                                         |
-|                  | user      | full               | full    |                                                                         |
-|                  |           |                    | none    |                                                                         |
-|                  |           |                    | partial |                                                                         |
-| create file      | root      | full               | none    | You can drop a file with the name `----checkpoint-action=exec=/bin/sh`  |
-|                  |           | none               | none    | You can drop a file but cannot control it, for example `temp1234`       |
-|                  |           | full               | full    |                                                                         |
-|                  |           | none               | full    |                                                                         |
-|                  |           | full               | partial |                                                                         |
+| Attacker Ability | Privilege | Filename/Extension | Content | Example                                                                           |
+|------------------|-----------|--------------------|---------|-----------------------------------------------------------------------------------|
+| delete a file    | root      | -                  | -       | A VPN priviledged daemon can be tricked into deleting an arbitrary file           |
+|                  | user      | -                  | -       | A webserver running with limited privs can delete an arbitrary file               |
+| append to a file | root      | full               | full    | Redirect log output of a root process to another file                             |
+|                  |           |                    | none    |                                                                                   |
+|                  |           |                    | partial |                                                                                   |
+|                  | user      | full               | full    |                                                                                   |
+|                  |           |                    | none    |                                                                                   |
+|                  |           |                    | partial |                                                                                   |
+| overwrite file   | root      | full               | full    |                                                                                   |
+|                  |           |                    | none    |                                                                                   |
+|                  |           |                    | partial |                                                                                   |
+|                  | user      | full               | full    |                                                                                   |
+|                  |           |                    | none    |                                                                                   |
+|                  |           |                    | partial |                                                                                   |
+| create file      | root      | full               | none    | You can drop a file with the name `----checkpoint-action=exec=/bin/sh`            |
+|                  |           | none               | none    | You can drop a file but cannot control it, for example `temp1234`                 |
+|                  |           | full               | full    | A controlled file is extracted that references file paths outside the archive.    |
+|                  |           | none               | full    |                                                                                   |
+|                  |           | full               | partial |                                                                                   |

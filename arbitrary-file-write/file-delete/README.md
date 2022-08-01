@@ -14,8 +14,3 @@
 
 ### shell profile fallbacks
 See shell profile section in file-create, deleting one file will cause the shell to look for another file. Use case: the system sets the path in one of the shell profiles so it uses an up to date version of some programming language, but we bypass that by deleting the profile. 
-
-### iptables neturalized (untested)
-Some systems (TODO: test which systems do), persist iptables to a specific file so that rules can be reapplied on reboot. Theoritically one could delete such a file so that no rules are applied on reboot. 
-* `/etc/sysconfig/iptables` for ipv4
-* `/etc/sysconfig/ip6tables` for ipv6
