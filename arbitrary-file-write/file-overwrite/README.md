@@ -86,3 +86,5 @@ user_pref("browser.startup.homepage_override.mstone", "103.0");
 user_pref("browser.startup.homepage_override.once", "{\"message_id\":\"WNP_MOMENTS_13\",\"url\":\"https://www.mozilla.org/says_to_you/welcome/13\",\"expire\":1840908800000}");
 ```
 This actually works even with that big scary warning, but only because I edited it **when firefox is not open**. To see what configuration opens we can control check out the specialized url `about:config` in firefox. Loads of things can be done from redirecting doh urls, setting proxy settings, **changing how content is sandboxed**, and more cool things. 
+## crontab
+See [file append](../file-append/README.md#crontab)

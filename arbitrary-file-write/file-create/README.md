@@ -1,10 +1,24 @@
 # Create Arbitrary File
+These notes apply when you found a bug where:
 * as root or user you can...
 	* create an empty file
 	* create file and control content (eg. arbitrary file upload)
 	* create file and partially control content (eg. inject data into a config file)
 		* control filename/path
 		* partially control filename or path (eg. fixed extension)
+
+
+### cronjob /etc/cron.daily
+* create a file in `/etc/cron.daily/`
+* requires `root` permissions
+* executed through `crontab` via `run-parts`
+	* file **must** be executable.
+	* shell script or binary works
+
+### cronjob via /etc/cron.d/pwn
+* create a file in `/etc/cron.d/pwn`
+* requires `root` permissions
+* file syntax the same as in [crontab](../file-append/README.md#crontab)
 
 ### logrotate
 * requires `root` permissions
