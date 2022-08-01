@@ -9,3 +9,12 @@
 	* system broken. tested: `sudo, login, su`
 * `rm /etc/sudoers`
 	* only `sudo` broken (also tested empty file)
+
+### FreeBSD
+
+* `rm /etc/spwd.db`
+	* system broken. tested: `passwd, sudo, login, su`
+* `rm /etc/master.passwd`
+	* only `passwd` broken
+* `rm /etc/pwd.db`
+	* only `passwd` broken
