@@ -33,8 +33,9 @@ ideas with root file write:
 
 ideas with root file append:
 
-javaarchive/smashmaster:
+* javaarchive/smashmaster:
 > If the environment variable ENV is set on entry to an interactive shell, or is set in the .profile of a login shell, the shell next reads commands from the file named in ENV...Therefore, a user should place commands that are to be executed only at login time in the .profile file, and commands that are executed for every interactive shell inside the ENV file.
 
 Might be useful for crontab because environment variables were explored. 
 Source: [dash manpages again](https://manned.org/dash). 
+*  javaarchive/smashmaster: Use the eicar antimalware test file to [trip an antivirus that deletes files](https://github.com/LiveOverflow/security-research/pull/1#discussion_r934387982) thus escalating this to file delete! 
