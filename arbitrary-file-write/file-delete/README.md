@@ -14,7 +14,8 @@
 
 * `rm /etc/spwd.db`
 	* system broken. tested: `passwd, sudo, login, su`
+	* system also broken after reboot. tested: `login`
 * `rm /etc/master.passwd`
-	* only `passwd` broken
+	* only `passwd` broken. still broken after reboot
 * `rm /etc/pwd.db`
-	* only `passwd` broken
+	* only `passwd` broken. still broken after reboot
