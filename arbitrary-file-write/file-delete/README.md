@@ -19,3 +19,5 @@
 	* only `passwd` broken. still broken after reboot
 * `rm /etc/pwd.db`
 	* only `passwd` broken. still broken after reboot
+* `rm /etc/group`
+	* `passwd, sudo, login, su` keep working as expected, even after reboot
